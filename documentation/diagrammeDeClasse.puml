@@ -1,0 +1,37 @@
+@startuml
+class Salle{
+    -int id
+    -int nbPlaces
+    -string nom
+}
+class Seance{
+    -int id
+    -DateTime dateProjection
+    -float tarifNormal
+    -float tarifReduit
+}
+class Film{
+    -int id
+    -string titre
+    -DateInterval duree
+}
+class Utilisateur{
+    -int id
+    -string username
+    -string password
+    -array[string] roles
+}
+class Reservation{
+    -int id
+    -int nbPlaces
+    -float montantTotal
+    -DateTime dateReservation
+}
+
+Salle "1..*" -- "1..1" Seance : contient >
+Seance "1..1" -- "1..*" Film : concerne >
+Utilisateur "0..*" -- "1..1" Reservation : effectue >
+Seance "1..*" -- "1..*" Reservation : comprend >
+
+
+@enduml
