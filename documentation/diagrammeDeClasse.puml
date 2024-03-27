@@ -12,8 +12,8 @@ class Seance{
 }
 class Film{
     -int id
+    -int duree
     -string titre
-    -DateInterval duree
 }
 class Utilisateur{
     -int id

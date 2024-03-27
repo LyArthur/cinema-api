@@ -19,8 +19,7 @@ class Film
     private ?string $titre = null;
 
     #[ORM\Column]
-    private ?\DateInterval $duree = null;
-
+    private ?int $duree = null;
     #[ORM\OneToMany(targetEntity: Seance::class, mappedBy: 'Film')]
     private Collection $seances;
 
@@ -50,12 +49,12 @@ class Film
         return $this;
     }
 
-    public function getDuree(): ?\DateInterval
+    public function getDuree(): ?int
     {
         return $this->duree;
     }
 
-    public function setDuree(\DateInterval $duree): static
+    public function setDuree(int $duree): static
     {
         $this->duree = $duree;
 
