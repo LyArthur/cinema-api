@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Functions;
+namespace App\Functions\CreateUser;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -10,18 +10,19 @@ class CreateUserRequest {
     public ?string $email;
     #[Assert\NotBlank(message: "Le mot de passe est obligatoire")]
     #[Assert\Regex(pattern: '/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[:?!;=]).*$/',message: "Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et un caractère spécial (?;!:=)")]
-    public ?string $mdp;
+    #[Assert\EqualTo("this.password == this.confirmPassword",message: "Les mots de passe ne correspondent pas")]
+    public ?string $password;
     #[Assert\NotBlank(message: "Veuillez confirmer le mot de passe")]
-    public ?string $confirmMdp;
+    public ?string $confirmPassword;
 
     /**
      * @param string|null $email
-     * @param string|null $mdp
-     * @param string|null $confirmMdp
+     * @param string|null $password
+     * @param string|null $confirmPassword
      */
-    public function __construct(?string $email, ?string $mdp, ?string $confirmMdp) {
+    public function __construct(?string $email, ?string $password, ?string $confirmPassword) {
         $this->email = $email;
-        $this->mdp = $mdp;
-        $this->confirmMdp = $confirmMdp;
+        $this->password = $password;
+        $this->confirmPassword = $confirmPassword;
     }
 }

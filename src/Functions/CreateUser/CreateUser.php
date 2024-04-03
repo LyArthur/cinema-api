@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Functions;
+namespace App\Functions\CreateUser;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -37,16 +37,12 @@ class CreateUser {
             throw new \Exception("L'email est déjà utilisé");
         }
 
-        if($requete->mdp !== $requete->confirmMdp){
-            throw new \Exception("Le mot de passe est différent entre les deux entrées");
-        }
-
         $user = new User();
         $user->setEmail($requete->email);
         $user->setRoles(["ROLE_USER"]);
         $hashedPassword = $passwordHasher->hashPassword(
             $user,
-            $requete->mdp
+            $requete->password
         );
         $user->setPassword($hashedPassword);
         $this->entityManager->persist($user);

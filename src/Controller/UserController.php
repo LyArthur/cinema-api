@@ -3,16 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Functions\CreateUser;
-use App\Functions\CreateUserRequest;
+use App\Functions\CreateUser\CreateUser;
+use App\Functions\CreateUser\CreateUserRequest;
 use Doctrine\ORM\EntityManagerInterface;
 use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Attributes as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request as Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
-use OpenApi\Attributes as OA;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\ValidatorBuilder;
 
