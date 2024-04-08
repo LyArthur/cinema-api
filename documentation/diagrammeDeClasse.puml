@@ -28,10 +28,10 @@ class Reservation{
     -DateTime dateReservation
 }
 
-Salle "1..*" -- "1..1" Seance : contient >
-Seance "1..1" -- "1..*" Film : concerne >
-Utilisateur "0..*" -- "1..1" Reservation : effectue >
-Seance "1..*" -- "1..*" Reservation : comprend >
+Salle "1..1" -- "1..*" Seance : contient >
+Seance "1..*" -- "1..1" Film : concerne >
+Utilisateur "1..1" -- "0..*" Reservation : effectue >
+Seance "1..1" -- "1..*" Reservation : comprend >
 
 
 @enduml
