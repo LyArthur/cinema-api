@@ -20,6 +20,17 @@ use Symfony\Component\Validator\ValidatorBuilder;
 class UserController extends AbstractController {
     #[Route('/users/register', name: 'app_user_register', methods: ['POST'])]
     #[OA\Tag(name: 'Users')]
+    #[OA\RequestBody(
+        required: true,
+        content: new OA\JsonContent(
+            type: User::class,
+            example: [
+                "email" => "example@gmail.com",
+                "password" => "NotAGoodPassword1234!:",
+                "confirmPassword" => "NotAGoodPassword1234!:"
+            ]
+        )
+    )]
     #[OA\Post(
         path: '/api/users/register',
         description: 'Créer un utilisateur',
